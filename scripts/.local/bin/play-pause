@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if playerctl -l | grep -q "spotify"; then
+    playerctl -p spotify play-pause
+else
+    playerctl play-pause
+fi
