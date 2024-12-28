@@ -13,10 +13,6 @@ I'll update this README file sometime soon, I promise lol
 
 - [ ] why won't grimshot respect `$XDG_SCREENSHOT_DIR`, I stg
 
-### Media
-
-- [ ] figure out why the play/pause bind keeps messing with the wrong f\*cking source every time
-
 ### other things I might try
 
 - [ ] wdisplays
