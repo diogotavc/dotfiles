@@ -20,3 +20,4 @@ I'll update this README file sometime soon, I promise lol
 ### other things I might try
 
 - [ ] wdisplays
+- [ ] **ARROZ**
