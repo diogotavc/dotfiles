@@ -10,8 +10,8 @@
     "notification-icon-size": 64,
     "notification-body-image-height": 100,
     "notification-body-image-width": 200,
-    "timeout": 3,
-    "timeout-low": 2,
+    "timeout": 5,
+    "timeout-low": 3,
     "timeout-critical": 0,
     "fit-to-screen": true,
     "control-center-width": 500,
@@ -49,8 +49,10 @@
             "image-radius": 7
         },
         "volume": {
-            "label": "󰕾",
-            "show-per-app": true
+            "label": "",
+            "show-per-app": true,
+            "expand-button-label": "󰞖",
+            "collapse-button-label": "󰞕"
         },
         "buttons-grid": {
             "actions": [
