@@ -1,4 +1,4 @@
-# Carvalho's poor dotfiles
+# _o Carvalho_'s poor dotfiles
 
 I'll update this README file sometime soon, I promise lol
 
@@ -12,6 +12,10 @@ I'll update this README file sometime soon, I promise lol
 ### Screenshots
 
 - [ ] why won't grimshot respect `$XDG_SCREENSHOT_DIR`, I stg
+
+### Media
+
+- [ ] figure out why the play/pause bind keeps messing with the wrong f\*cking source every time
 
 ### other things I might try
 
