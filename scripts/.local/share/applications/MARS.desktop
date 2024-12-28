@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MARS
+Comment=MIPS simulator
+Exec=java -jar /home/diogo/.local/bin/MARS/mars.jar
+Icon=/home/diogo/.local/bin/MARS/mars.jpg
+Terminal=false
+Categories=Development;IDE;

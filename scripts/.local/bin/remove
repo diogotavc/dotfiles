@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for app in "$@"
+do
+	flatpak remove --delete-data -y "$app"
+done

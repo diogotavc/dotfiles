@@ -1,0 +1,53 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+
+    systemctl reboot
+
+elif [ $# -eq 1 ]; then
+
+    case $1 in
+        soft)
+            systemctl soft-reboot
+            ;;
+        menu)
+            entry="Boot Menu"
+            ;;
+        usb)
+            entry="USB HDD"
+            ;;
+        windows)
+            entry="Windows Boot Manager"
+            ;;
+        firmware)
+            systemctl reboot --firmware-setup
+            ;;
+        -h | --help)
+            echo "soft      → Soft Reboot"
+            echo "menu      → Boot Menu"
+            echo "usb       → USB HDD"
+            echo "windows   → Windows Boot Manager"
+            echo "firmware  → UEFI Setup"
+            echo "entry     → \$1"
+            exit 0
+            ;;
+        *)
+            entry="$1"
+            ;;
+    esac
+
+    boot=$( { efibootmgr | grep -m 1 "$entry"; } 2>&1 )
+
+    if [ $? -ne 0 ]; then
+        echo "$entry has not been found!"
+        exit 1
+    fi
+
+    pkexec efibootmgr -q --bootnext ${boot:4:4} && systemctl reboot
+
+else
+
+    echo "Too many arguments!"
+    exit 1
+
+fi
