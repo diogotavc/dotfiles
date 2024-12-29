@@ -109,6 +109,8 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
     # bindsym XF86PowerOff exec systemctl suspend -- handling it through systemd-logind
     bindsym Ctrl+Alt+Delete exec swaynag -t warning -m 'Shut this system down?' -B 'Yes, shut down' 'poweroff'
     bindsym Ctrl+Alt+l exec /home/diogo/.local/bin/lock
+    # bindgesture swipe:down exec /home/diogo/.local/bin/lock
+    # bindgesture swipe:down move container to workspace number 10
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -134,6 +136,12 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
 #
 # Moving around:
 #
+    # Next and previous workspace
+    bindsym $mod+Next workspace next
+    bindsym $mod+Prior workspace prev
+    bindgesture swipe:left workspace next
+    bindgesture swipe:right workspace prev
+
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
