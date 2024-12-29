@@ -136,6 +136,9 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
 #
 # Moving around:
 #
+    # Move floating windows to the centre
+    bindsym Ctrl+Alt+Home move position center
+
     # Next and previous workspace
     bindsym $mod+Next workspace next
     bindsym $mod+Prior workspace prev
