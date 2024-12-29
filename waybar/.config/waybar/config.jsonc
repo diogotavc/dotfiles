@@ -195,7 +195,8 @@
         "on-click": "pavucontrol"
     },
     "mpris": {
-        "format": "{dynamic}",
+        "format": "",
+        "format-playing": "{dynamic}",
         "dynamic-order": ["artist", "title"]
     },
     "custom/media": {
