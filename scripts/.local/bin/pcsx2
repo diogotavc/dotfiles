@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Set fan speed to full-speed
+echo level full-speed | pkexec tee /proc/acpi/ibm/fan
+
+# Launch PCSX2 Flatpak
+# flatpak run net.pcsx2.PCSX2 &
+flatpak run net.pcsx2.PCSX2 -bigpicture -fullscreen &
+
+# Get the PID of the last background command (PCSX2)
+pcsx2_pid=$!
+
+# Function to reset fan speed to auto
+reset() {
+    echo level auto | pkexec tee /proc/acpi/ibm/fan
+    kill $pcsx2_pid 2>/dev/null
+    exit
+}
+
+# Trap SIGINT (Ctrl+C) and SIGTERM (kill)
+trap reset SIGINT SIGTERM
+
+# Wait for PCSX2 to exit
+wait $pcsx2_pid
+
+# Reset fan speed to auto after PCSX2 closes
+reset
