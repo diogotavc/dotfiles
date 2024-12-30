@@ -109,8 +109,6 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
     # bindsym XF86PowerOff exec systemctl suspend -- handling it through systemd-logind
     bindsym Ctrl+Alt+Delete exec swaynag -t warning -m 'Shut this system down?' -B 'Yes, shut down' 'poweroff'
     bindsym Ctrl+Alt+l exec /home/diogo/.local/bin/lock
-    # bindgesture swipe:down exec /home/diogo/.local/bin/lock
-    # bindgesture swipe:down move container to workspace number 10
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -230,6 +228,8 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+    bindgesture swipe:up scratchpad show
+    bindgesture swipe:down scratchpad show
 #
 # Resizing containers:
 #
