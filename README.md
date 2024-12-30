@@ -16,5 +16,4 @@ I'll update this README file sometime soon, I promise lol
 ### other things I might try
 
 - [ ] wdisplays
-- [ ] why stow ignores my.. local-ignore (I'm dumb asf)
 - [ ] **ARROZ**
