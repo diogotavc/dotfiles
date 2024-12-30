@@ -41,6 +41,7 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 # Toggle DND mode
 bindsym $mod+XF86Favorites exec /home/diogo/.local/bin/toggle-dnd
 
+font "Cantarell" 10
 default_border pixel
 smart_borders on
 
