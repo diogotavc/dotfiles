@@ -141,8 +141,12 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
     # Next and previous workspace
     bindsym $mod+Next workspace next
     bindsym $mod+Prior workspace prev
-    bindgesture swipe:left workspace next
-    bindgesture swipe:right workspace prev
+    bindgesture swipe:3:left workspace next
+    bindgesture swipe:3:right workspace prev
+    bindgesture swipe:4:right focus left
+    bindgesture swipe:4:up focus down
+    bindgesture swipe:4:down focus up
+    bindgesture swipe:4:left focus right
 
     # Move your focus around
     bindsym $mod+$left focus left
