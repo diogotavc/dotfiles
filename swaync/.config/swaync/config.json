@@ -82,7 +82,7 @@
                 },
                 {
                     "label": "",
-                    "command": "flatpak run com.obsproject.Studio"
+                    "command": "obs"
                 }
             ]
         }
