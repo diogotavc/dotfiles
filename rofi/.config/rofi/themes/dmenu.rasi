@@ -13,18 +13,15 @@
 window {
     anchor:                 north west;
     location:               north west;
-    width:                  70%;
+    width:                  75%;
     height:                 33px;
     padding:                0px;
-    children:               [ horibox ];
     y-offset:               -33px;
+    children:               [ horibox ];
 }
 horibox {
     orientation:            horizontal;
     children:               [ entry, listview ];
-}
-prompt {
-    vertical-align:         0.5;
 }
 entry {
     expand:                 false;
@@ -37,20 +34,18 @@ listview {
     cycle:                  false;
     spacing:                0px;
     lines:                  100;
+    children:               [ element ];
     /* need to fix the fact the list moves
     if I go back to the left */
 }
 element {
     children:               [ element-text ];
-    /* need to fix padding and margin here */
-    margin:                 4px 0 0;
 }
 element-text {
     background-color:       inherit;
     text-color:             inherit;
-    vertical-align:         0.5;
-    /* need to fix padding here */
-    padding:                5px 15px 7px;
+    /* to-do: stop hardcoding values */
+    padding:                7px 15px 9px;
 }
 element selected {
     background-color:     #64727D;
