@@ -25,7 +25,8 @@ set $rofi_cmd rofi \
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
-set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+set $menu $rofi_cmd -show combi -combi-modes drun -modes combi -display-combi "All Apps:"
+set $window_menu $rofi_cmd -show combi -combi-modes window -modes combi -display-combi "All Windows:"
 
 # gnome-keyring
 # exec systemctl --user import-environment && gnome-keyring-daemon --components=pkcs11,ssh,gpg --start
@@ -119,6 +120,8 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    # Window search
+    bindsym $mod+Tab exec $window_menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
