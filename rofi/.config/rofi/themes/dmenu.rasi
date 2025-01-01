@@ -43,15 +43,21 @@ listview {
     if I go back to the left */
 }
 element {
+    // children:               [ element-icon, element-text ];
     children:               [ element-text ];
-}
-element-text {
-    background-color:       inherit;
-    text-color:             inherit;
-    /* to-do: stop hardcoding values */
-    padding:                7px 15px 9px;
 }
 element selected {
     background-color:     #64727D;
     border:                 0 0 3 0;
+}
+// element-icon {
+//     background-color:       inherit;
+//     padding:                4px 12px;
+// }
+element-text {
+    background-color:       inherit;
+    text-color:             inherit;
+    /* to-do: stop hardcoding values */
+    // padding:                7px 15px 9px 0;
+    padding:                7px 15px 9px;
 }
