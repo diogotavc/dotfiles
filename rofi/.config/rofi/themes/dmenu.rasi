@@ -5,39 +5,44 @@
  */
 
 * {
-    background-color:      Black;
-    border-color:          White;
-    text-color:           White;
-    font:            "Cantarell 12";
+    background-color:       Black;
+    border-color:           White;
+    text-color:             White;
+    font:                   "Cantarell 12";
 }
 window {
-    anchor:     south;
-    location:   south;
-    width:      100%;
-    padding:    0px;
-    children:   [ horibox ];
+    anchor:                 north;
+    location:               north;
+    width:                  100%;
+    height:                 33px;
+    padding:                0px;
+    children:               [ horibox ];
+    y-offset:               -33px;
 }
 horibox {
-    orientation: horizontal;
-    children:   [ prompt, entry, listview ];
+    orientation:            horizontal;
+    children:               [ prompt, entry, listview ];
 }
 listview {
-    layout:     horizontal;
-    spacing:    5px;
-    lines:      100;
+    layout:                 horizontal;
+    spacing:                5px;
+    lines:                  100;
 }
 entry {
-    expand:     false;
-    width:      10em;
+    expand:                 false;
+    width:                  10em;
+    padding:                4px 0px 0px 0px;
 }
 element {
-    padding: 4px 6px;
+    padding:                4px 6px;
 }
 element selected {
-    background-color: SteelBlue;
+    background-color:       SteelBlue;
 }
-
 element-text, element-icon {
-  background-color: inherit;
-  text-color: inherit;
+    background-color:       inherit;
+    text-color:             inherit;
+}
+prompt {
+    padding:                4px 4px 0px 4px;
 }
