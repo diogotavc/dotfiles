@@ -8,12 +8,12 @@
     background-color:       Black;
     border-color:           White;
     text-color:             White;
-    font:                   "Cantarell 12";
+    font:                   "Cantarell 10";
 }
 window {
-    anchor:                 north;
-    location:               north;
-    width:                  100%;
+    anchor:                 north west;
+    location:               north west;
+    width:                  70%;
     height:                 33px;
     padding:                0px;
     children:               [ horibox ];
@@ -21,28 +21,38 @@ window {
 }
 horibox {
     orientation:            horizontal;
-    children:               [ prompt, entry, listview ];
+    children:               [ entry, listview ];
 }
-listview {
-    layout:                 horizontal;
-    spacing:                5px;
-    lines:                  100;
+prompt {
+    vertical-align:         0.5;
 }
 entry {
     expand:                 false;
     width:                  10em;
-    padding:                4px 0px 0px 0px;
+    vertical-align:         0.5;
+    padding:                0 8px;
+}
+listview {
+    layout:                 horizontal;
+    cycle:                  false;
+    spacing:                0px;
+    lines:                  100;
+    /* need to fix the fact the list moves
+    if I go back to the left */
 }
 element {
-    padding:                4px 6px;
+    children:               [ element-text ];
+    /* need to fix padding and margin here */
+    margin:                 4px 0 0;
 }
-element selected {
-    background-color:       SteelBlue;
-}
-element-text, element-icon {
+element-text {
     background-color:       inherit;
     text-color:             inherit;
+    vertical-align:         0.5;
+    /* need to fix padding here */
+    padding:                5px 15px 7px;
 }
-prompt {
-    padding:                4px 4px 0px 4px;
+element selected {
+    background-color:     #64727D;
+    border:                 0 0 3 0;
 }
