@@ -21,7 +21,7 @@ window {
 }
 horibox {
     orientation:            horizontal;
-    children:               [ prompt, entry, listview ];
+    children:               [ entry, listview ];
 }
 prompt {
     padding:                0 8px 0;
