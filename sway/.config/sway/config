@@ -122,6 +122,9 @@ input 2:14:ETPS/2_Elantech_TrackPoint {
     bindsym $mod+d exec $menu
     # Window search
     bindsym $mod+Tab exec $window_menu
+    # Focus different windows
+    bindsym Alt+Tab exec focus_window next
+    bindsym Shift+Alt+Tab exec focus_window prev
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
