@@ -31,7 +31,8 @@
         "custom/notification"
     ],
     "sway/workspaces": {
-        "disable-scroll": true
+        "disable-scroll": true,
+        "disable-click": true
     },
     // Modules configuration
     // "sway/workspaces": {
