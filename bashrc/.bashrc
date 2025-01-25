@@ -4,6 +4,8 @@
 
 alias lsl='ls -l'
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+alias ls-fw='sudo firewall-cmd --zone=public --add-port=53317/tcp --timeout=600s && sudo firewall-cmd --zone
+=public --add-port=53317/udp --timeout=600s && sudo firewall-cmd --list-ports'
 
 echo -e "\n$(/home/diogo/.local/bin/welcome)\n"
 
