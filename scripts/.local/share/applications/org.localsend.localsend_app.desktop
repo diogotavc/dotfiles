@@ -1,0 +1,13 @@
+[Desktop Entry]
+X-AppImage-Arch=x86_64
+X-AppImage-Version=latest
+X-AppImage-Name=LocalSend
+Name=LocalSend
+Exec=/bin/bash /home/diogo/.local/bin/localsend
+Icon=org.localsend.localsend_app
+Type=Application
+Terminal=false
+Categories=Utility;
+Comment=Share files to nearby devices.
+X-Desktop-File-Install-Version=0.28
+X-Flatpak=org.localsend.localsend_app

@@ -6,7 +6,6 @@ Name=PCSX2
 StartupWMClass=PCSX2
 GenericName=PlayStation 2 Emulator
 Comment=Sony PlayStation 2 emulator
-#Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=pcsx2-qt net.pcsx2.PCSX2
 Exec=/bin/bash /home/diogo/.local/bin/pcsx2
 Icon=net.pcsx2.PCSX2
 Keywords=game;emulator;

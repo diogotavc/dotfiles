@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pkexec sh -c 'firewall-cmd --zone=public --add-port=53317/tcp && firewall-cmd --zone=public --add-port=53317/udp' &&
+/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=localsend --file-forwarding org.localsend.localsend_app @@u %U @@;
+pkexec sh -c 'firewall-cmd --zone=public --remove-port=53317/tcp && firewall-cmd --zone=public --remove-port=53317/udp'
