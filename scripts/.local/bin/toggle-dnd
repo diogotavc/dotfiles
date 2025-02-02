@@ -1,11 +1,3 @@
 #!/bin/bash
 
-#bash -c 'gsettings set org.gnome.desktop.notifications show-banners $(if [ "$(gsettings get org.gnome.desktop.notifications show-banners)" = "true" ]; then echo "false"; else echo "true"; fi)'
-
-current_state=$(swaync-client -D)
-
-if [ "$current_state" == "true" ]; then
-    swaync-client -df
-elif [ "$current_state" == "false" ]; then
-    swaync-client -dn
-fi
+bash -c 'gsettings set org.gnome.desktop.notifications show-banners $(if [ "$(gsettings get org.gnome.desktop.notifications show-banners)" = "true" ]; then echo "false"; else echo "true"; fi)'
