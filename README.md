@@ -1,19 +1,15 @@
 # _o Carvalho_'s poor dotfiles
 
-I'll update this README file sometime soon, I promise lol
+Updates VERY soon :)
 
-## To-do list
+## Sway is no more!
 
-### Notifications
+This repository was previously centered around my Sway workflow. It served me well and helped me stay productive, even during exam season.
 
-- [ ] ignore certain notifications (still don't know much about how swaync handles them)
-- [ ] avoid showing notifications when in full-screen (except volume and brightness related)
+However, I've since migrated back to GNOME. While I enjoyed the tiling workflow of Sway, I found myself missing some aspects of a more traditional desktop environment.
 
-### Screenshots
+As such, the Sway configuration files are no longer actively updated or in use. Feel free to browse [them](<https://github.com/diogotavc/dotfiles/tree/f11f4eddfbe1847590c26f32d208de3cfe66a949>) for inspiration, but please be aware that they may not be fully functional or compatible with the latest versions of the associated programs.
 
-- [ ] why won't grimshot respect `$XDG_SCREENSHOT_DIR`, I stg
+If you're interested in setting up a similar environment, I recommend checking out the documentation for Sway and the other programs listed in the dotfiles.
 
-### other things I might try
-
-- [ ] wdisplays
-- [ ] **ARROZ**
+Thank you for visiting!
