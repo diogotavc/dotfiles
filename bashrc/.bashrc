@@ -12,8 +12,6 @@ PROMPT_DIRTRIM=2
 
 # git gpg stuff
 export GPG_TTY=$(tty)
-# ssh stuff as well
-export SSH_AUTH_SOCK=/run/user/1000/gcr/ssh
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
