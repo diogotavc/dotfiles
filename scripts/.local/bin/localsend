@@ -1,5 +1,25 @@
 #!/bin/bash
+set -euo pipefail
+pkexec sh -c '
+    PORT="53317"
+    add_firewall() {
+        firewall-cmd --zone=public --add-port="${PORT}/tcp"
+        firewall-cmd --zone=public --add-port="${PORT}/udp"
+    }
+    cleanup_firewall() {
+        firewall-cmd --zone=public --remove-port="${PORT}/tcp"
+        firewall-cmd --zone=public --remove-port="${PORT}/udp"
+    }
+    add_firewall
+    trap cleanup_firewall EXIT
+    env DISPLAY="'"$DISPLAY"'" XDG_RUNTIME_DIR="'"$XDG_RUNTIME_DIR"'" DBUS_SESSION_BUS_ADDRESS="'"$DBUS_SESSION_BUS_ADDRESS"'" \
+    runuser -u "$1" -- flatpak run --branch=stable --arch=x86_64 --command=localsend --file-forwarding org.localsend.localsend_app @@u %U @@
+' sh "$USER"
 
-pkexec sh -c 'firewall-cmd --zone=public --add-port=53317/tcp && firewall-cmd --zone=public --add-port=53317/udp' &&
-/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=localsend --file-forwarding org.localsend.localsend_app @@u %U @@;
-pkexec sh -c 'firewall-cmd --zone=public --remove-port=53317/tcp && firewall-cmd --zone=public --remove-port=53317/udp'
+# pkexec sh -c '
+#     firewall-cmd --zone=public --add-port=53317/tcp &&
+#     firewall-cmd --zone=public --add-port=53317/udp
+#     trap "firewall-cmd --zone=public --remove-port=53317/tcp; firewall-cmd --zone=public --remove-port=53317/udp" EXIT
+#     env DISPLAY='"$DISPLAY"' XDG_RUNTIME_DIR='"$XDG_RUNTIME_DIR"' DBUS_SESSION_BUS_ADDRESS='"$DBUS_SESSION_BUS_ADDRESS"' \
+#     runuser -u "$1" -- flatpak run --branch=stable --arch=x86_64 --command=localsend --file-forwarding org.localsend.localsend_app @@u %U @@
+# ' sh "$USER"
