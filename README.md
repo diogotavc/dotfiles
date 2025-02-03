@@ -2,6 +2,11 @@
 
 Updates VERY soon :)
 
+## To-Do list
+
+- [ ] Improve and make the source code of [welcome](scripts/.local/bin/welcome) public
+- [ ] Add more information on how I set my Fedora Workstation up
+
 ## Sway is no more!
 
 This repository was previously centered around my Sway workflow. It served me well and helped me stay productive, even during exam season.
