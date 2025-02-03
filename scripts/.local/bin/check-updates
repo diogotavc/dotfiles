@@ -20,7 +20,11 @@ check_updates() {
         if [ -n "$NOTIFY_SEND" ]; then
             update_count=$(echo "$updates" | tail -n +2 | wc -l)
             DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus \
-            $NOTIFY_SEND --app-name=Updates -u critical "Updates Available" "$update_count packages can be updated"
+            USER_ACTION=$($NOTIFY_SEND --app-name=Updates -u critical "Updates Available" "$update_count packages can be updated" \
+            --action="update=Update system")
+            if [[ $USER_ACTION == "update" ]]; then
+                ptyxis -x /home/diogo/.local/bin/update
+            fi
         fi
 
         # Terminal
