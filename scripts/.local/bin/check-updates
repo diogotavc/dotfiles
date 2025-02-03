@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Update checker for dnf because I can't be bothered to have gnome-software installed lol
+
+NOTIFY_SEND=$(which notify-send)
+DNF=$(which dnf)
+LOG_FILE="/var/tmp/update-checker.log"
+
+check_updates() {
+    echo "Checking for updates at $(date)" >> "$LOG_FILE"
+
+    updates=$($DNF check-update 2>&1)
+    exit_code=$?
+
+    if [ $exit_code -eq 100 ]; then
+        echo "Updates available:" >> "$LOG_FILE"
+        echo "$updates" >> "$LOG_FILE"
+
+        # Notification
+        if [ -n "$NOTIFY_SEND" ]; then
+            update_count=$(echo "$updates" | tail -n +2 | wc -l)
+            DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus \
+            $NOTIFY_SEND --app-name=Updates -u critical "Updates Available" "$update_count packages can be updated"
+        fi
+
+        # Terminal
+        echo "Updates available!"
+        echo "$updates"
+        return 100
+    elif [ $exit_code -eq 0 ]; then
+        echo "No updates available" >> "$LOG_FILE"
+        return 0
+    else
+        echo "Error checking updates (exit code $exit_code):" >> "$LOG_FILE"
+        echo "$updates" >> "$LOG_FILE"
+        return 1
+    fi
+}
+
+check_updates
