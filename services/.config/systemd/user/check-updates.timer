@@ -1,9 +1,8 @@
 [Unit]
-Description=Trigger update check 1 hour after login
+Description=Trigger update check every day at 18h
 
 [Timer]
-OnActiveSec=1h
-AccuracySec=10m
+OnCalendar=*-*-* 18:00:00
 Persistent=false
 
 [Install]

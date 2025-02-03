@@ -3,4 +3,4 @@ Description=Check for system updates
 
 [Service]
 Type=oneshot
-ExecStart=/home/diogo/.dotfiles/scripts/.local/bin/check-updates
+ExecStart=/home/diogo/.local/bin/check-updates
