@@ -9,35 +9,45 @@ LOG_FILE="/var/tmp/update-checker.log"
 check_updates() {
     echo "Checking for updates at $(date)" >> "$LOG_FILE"
 
-    updates=$($DNF check-update 2>&1)
-    exit_code=$?
+    dnf_updates=$($DNF check-update 2>&1)
+    dnf_code=$?
+    flatpak_updates=$(flatpak remote-ls --updates 2>/dev/null)
+    flatpak_code=$?
 
-    if [ $exit_code -eq 100 ]; then
+    if [[ $dnf_code -eq 100 ]] || [[ -n $flatpak_updates ]] ; then
         echo "Updates available:" >> "$LOG_FILE"
-        echo "$updates" >> "$LOG_FILE"
+        if [ $dnf_code -eq 100 ]; then
+            echo -e "$dnf_updates\n\n---\n" >> "$LOG_FILE"
+        fi
+        echo -e "FLATPAK\n$flatpak_updates" >> "$LOG_FILE"
 
         # Notification
         if [ -n "$NOTIFY_SEND" ]; then
-            update_count=$(echo "$updates" | tail -n +2 | wc -l)
+            flatpak_count=$(echo "$flatpak_updates" | wc -l)
+            dnf_count="0"
+            if [ $dnf_code -ne 0 ]; then
+                dnf_count=$(echo "$dnf_updates" | tail -n +2 | wc -l)
+            fi
+            update_count=$(echo $flatpak_count+$dnf_count | bc)
+
             DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus \
-            USER_ACTION=$($NOTIFY_SEND --app-name=Updates -u critical "Updates Available" "$update_count packages can be updated" \
+            user_action=$($NOTIFY_SEND --app-name=Updates -u critical "Updates Available" "$update_count packages can be updated" \
             --action="update=Update system")
-            if [[ $USER_ACTION == "update" ]]; then
+            if [[ $user_action == "update" ]]; then
                 ptyxis -x /home/diogo/.local/bin/update
             fi
         fi
 
         # Terminal
-        echo "Updates available!"
-        echo "$updates"
-        # to avoid errors, let's not keep the exit code 100
+        echo -e "$dnf_updates\n\n---\n\n$flatpak_updates"
         return 0
-    elif [ $exit_code -eq 0 ]; then
+    elif [[ $dnf_code -eq 0 ]] && [[ -z $flatpak_updates ]]; then
         echo "No updates available" >> "$LOG_FILE"
         return 0
     else
-        echo "Error checking updates (exit code $exit_code):" >> "$LOG_FILE"
-        echo "$updates" >> "$LOG_FILE"
+        echo "Error checking updates (dnf returned $dnf_code and flatpak returned $flatpak_code):" >> "$LOG_FILE"
+        echo "$dnf_updates" >> "$LOG_FILE"
+        echo "$flatpak_updates" >> "$LOG_FILE"
         return 1
     fi
 }
