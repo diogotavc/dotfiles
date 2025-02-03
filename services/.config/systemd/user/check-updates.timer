@@ -1,0 +1,10 @@
+[Unit]
+Description=Trigger update check 1 hour after login
+
+[Timer]
+OnActiveSec=1h
+AccuracySec=10m
+Persistent=false
+
+[Install]
+WantedBy=default.target

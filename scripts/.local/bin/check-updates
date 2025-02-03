@@ -26,7 +26,8 @@ check_updates() {
         # Terminal
         echo "Updates available!"
         echo "$updates"
-        return 100
+        # to avoid errors, let's not keep the exit code 100
+        return 0
     elif [ $exit_code -eq 0 ]; then
         echo "No updates available" >> "$LOG_FILE"
         return 0

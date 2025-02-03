@@ -1,1 +1,2 @@
 scripts/.local/share/applications/mimeapps.list
+services/.config/systemd/user/default.target.wants/
