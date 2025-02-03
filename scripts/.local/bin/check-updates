@@ -32,7 +32,13 @@ check_updates() {
         user_action=$($NOTIFY_SEND --app-name=Updates -u critical "Updates Available" "$update_count packages can be updated" \
         --action="update=Update system")
         if [[ $user_action == "update" ]]; then
-            ptyxis -x /home/diogo/.local/bin/update
+            ptyxis -x "pkexec /home/diogo/.local/bin/update 2>&1 | tee /var/tmp/update"
+            update_status=${PIPESTATUS[0]}
+            if [[ $update_status -eq 0 ]]; then
+                $NOTIFY_SEND --app-name=Updates "Update Successful" "System updated successfully"
+            else
+                $NOTIFY_SEND --app-name=Updates -u critical "Update Failed" "System update encountered errors"
+            fi
         fi
 
         return 0
