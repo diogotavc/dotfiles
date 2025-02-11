@@ -7,6 +7,7 @@ Updates VERY soon :)
 - [ ] Improve and make the source code of [welcome](scripts/.local/bin/welcome) public
 - [ ] Add more information on how I set my Fedora Workstation up
 - [ ] Add resolution awareness and remove logs from [ffcompress](scripts/.local/bin/ffcompress)
+- [ ] Fix check-updates service
 
 ## Sway is no more!
 
