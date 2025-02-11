@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=OpenJDK 23 for x86_64 Monitoring & Management Console (23.0.2.0.7-1.rolling.fc41.x86_64)
+Comment=Monitor and manage OpenJDK applications
+Exec=/usr/lib/jvm/java-23-openjdk-23.0.2.0.7-1.rolling.fc41.x86_64/bin/jconsole
+Icon=java-23-openjdk
+Terminal=false
+Type=Application
+StartupWMClass=sun-tools-jconsole-JConsole
+Categories=Development;Profiling;Java;
+Version=1.0
+X-Desktop-File-Install-Version=0.27
+NoDisplay=true
+Hidden=true
