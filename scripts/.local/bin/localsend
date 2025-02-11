@@ -15,11 +15,3 @@ pkexec sh -c '
     env DISPLAY="'"$DISPLAY"'" XDG_RUNTIME_DIR="'"$XDG_RUNTIME_DIR"'" DBUS_SESSION_BUS_ADDRESS="'"$DBUS_SESSION_BUS_ADDRESS"'" \
     runuser -u "$1" -- flatpak run --branch=stable --arch=x86_64 --command=localsend --file-forwarding org.localsend.localsend_app @@u %U @@
 ' sh "$USER"
-
-# pkexec sh -c '
-#     firewall-cmd --zone=public --add-port=53317/tcp &&
-#     firewall-cmd --zone=public --add-port=53317/udp
-#     trap "firewall-cmd --zone=public --remove-port=53317/tcp; firewall-cmd --zone=public --remove-port=53317/udp" EXIT
-#     env DISPLAY='"$DISPLAY"' XDG_RUNTIME_DIR='"$XDG_RUNTIME_DIR"' DBUS_SESSION_BUS_ADDRESS='"$DBUS_SESSION_BUS_ADDRESS"' \
-#     runuser -u "$1" -- flatpak run --branch=stable --arch=x86_64 --command=localsend --file-forwarding org.localsend.localsend_app @@u %U @@
-# ' sh "$USER"

@@ -1,25 +1,12 @@
 #!/bin/bash
 
-#governor=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
-#cores=$(($(nproc)-1))
-
 level=$(cat /proc/acpi/ibm/fan | grep "level:" | awk '{print $2}')
 echo level full-speed | sudo tee /proc/acpi/ibm/fan
 
-#for cpu in /sys/devices/system/cpu/cpu[0-$cores]*; do
-#    echo "performance" | sudo tee "$cpu/cpufreq/scaling_governor" > /dev/null
-#done
-
-
 reset() {
-    #for cpu in /sys/devices/system/cpu/cpu[0-$cores]*; do
-    #    echo "$governor" | sudo tee "$cpu/cpufreq/scaling_governor" > /dev/null
-    #done
-
     echo level $level | sudo tee /proc/acpi/ibm/fan
     exit
 }
 
 trap reset SIGINT SIGTERM
-
 sleep infinity
