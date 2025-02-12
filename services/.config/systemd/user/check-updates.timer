@@ -1,5 +1,5 @@
 [Unit]
-Description=Trigger update check every day at 18h
+Description=Trigger update check every 1 and 24 hours
 
 [Timer]
 OnBootSec=1h
