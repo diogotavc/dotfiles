@@ -2,8 +2,9 @@
 Description=Trigger update check every day at 18h
 
 [Timer]
-OnCalendar=*-*-* 18:00:00
-Persistent=false
+OnBootSec=1h
+OnUnitActiveSec=24h
+Persistent=true
 
 [Install]
 WantedBy=default.target
