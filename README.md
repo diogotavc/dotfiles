@@ -4,9 +4,14 @@ Updates VERY soon :)
 
 ## To-Do list
 
-- [ ] Improve and make the source code of [welcome](scripts/.local/bin/welcome) public
 - [ ] Add more information on how I set my Fedora Workstation up
 - [ ] Add resolution awareness and remove logs from [ffcompress](scripts/.local/bin/ffcompress)
+
+## Notes on the welcome binary included in bashrc and scripts
+
+The binary `welcome` is a small utility written I made in Go because shell was too slow for what I needed. I have no clue how to include it here somehow, so I'll link it instead: [welcome_shell](https://github.com/diogotavc/welcome_shell)
+
+More updates coming its way, hopefully soon!
 
 ## Sway is no more!
 
