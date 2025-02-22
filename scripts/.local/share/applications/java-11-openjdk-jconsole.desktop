@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=OpenJDK 11 for x86_64 Monitoring & Management Console (11.0.26.0.4-1.fc41.x86_64)
+Name=OpenJDK 11 for x86_64 Monitoring & Management Console (11.0.26.0.4-6.fc41.x86_64)
 Comment=Monitor and manage OpenJDK applications
-Exec=/usr/lib/jvm/java-11-openjdk-11.0.26.0.4-1.fc41.x86_64/bin/jconsole
+Exec=/usr/lib/jvm/java-11-openjdk/bin/jconsole
 Icon=java-11-openjdk
 Terminal=false
 Type=Application
