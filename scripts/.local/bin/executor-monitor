@@ -1,0 +1,11 @@
+#!/bin/bash
+
+batteryPath="/sys/class/power_supply/BAT0"
+
+fanVal=$(sensors | grep 'fan1:' | tail -c 10 | tr -d ' ' | sed 's/RPM//')
+cpuVal=$(sensors | grep 'CPU:' | tail -c 10 | tr -d ' ' | sed 's/°C//')
+consumption=$(expr $(cat "$batteryPath/power_now") / 100000)
+
+units=$(expr $consumption / 10)
+decimal=$(expr $consumption % 10)
+echo "$units.$decimal W   $fanVal RPM   $cpuVal°C"
