@@ -4,6 +4,7 @@
 
 alias lsl='ls -l'
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+alias uh='echo unset HISTFILE && unset HISTFILE'
 
 echo -e "\n$(/home/diogo/.local/bin/welcome)\n"
 
