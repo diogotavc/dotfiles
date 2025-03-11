@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ $# -gt 0 ]; then
+    newLevel=$1
+    echo "level $newLevel" | sudo tee /proc/acpi/ibm/fan >/dev/null
+fi
+
+# Battery
+batteryPath="/sys/class/power_supply/BAT0"
+batteryStatus=$(cat "$batteryPath/status")
+# Fan
+currentLevel=$(cat /proc/acpi/ibm/fan | grep "level:" | awk '{print $2}')
+fanSpeed=$(sensors | grep 'fan1:' | tail -c 10 | tr -d ' ' | sed 's/RPM//')
+# Temperature
+cpuTemp=$(sensors | grep 'CPU:' | tail -c 10 | tr -d ' ' | sed 's/°C//')
+# Power consumption
+consumption=$(expr $(cat "$batteryPath/power_now") / 100000)
+units=$(expr $consumption / 10)
+decimal=$(expr $consumption % 10)
+consumption=$units.$decimal
+
+echo "Battery:        $consumption W ($batteryStatus)"
+echo "Fan Speed:      $fanSpeed RPM ($currentLevel)"
+echo "Temperature:    $cpuTemp°C"
