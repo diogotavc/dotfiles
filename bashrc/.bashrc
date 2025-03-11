@@ -5,8 +5,9 @@
 alias lsl='ls -l'
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias uh='echo unset HISTFILE && unset HISTFILE'
+alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
 
-echo -e "\n$(/home/diogo/.local/bin/welcome)\n"
+echo -e "$(health-monitor)\n"
 
 # Shorten prompt
 PROMPT_DIRTRIM=2
