@@ -1,5 +1,7 @@
 # .bashrc
 
+stty -echo
+
 # Miscellaneous
 
 alias lsl='ls -l'
@@ -37,7 +39,10 @@ if [ -d ~/.bashrc.d ]; then
         fi
     done
 fi
-unset rc
+
 export GOPATH=$HOME/.go
 export CLASSPATH=".:/usr/local/lib/antlr-4.13.2-complete.jar:/usr/local/lib/ST-4.3.4.jar"
 export ANTLR4_PATH="/usr/local/lib"
+
+stty echo
+unset rc
