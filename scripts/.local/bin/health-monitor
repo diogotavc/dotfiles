@@ -1,43 +1,63 @@
 #!/bin/bash
 
-# Battery
+if [[ $# -gt 0 && $1 == '-h' ]]; then
+    cat /proc/acpi/ibm/fan
+    exit 0
+elif [[ $# -gt 0 && $1 != 'watch' && $1 != 'executor' ]]; then
+    echo "$*" | sudo tee /proc/acpi/ibm/fan >/dev/null
+    exit 0
+fi
+
 batteryPath="/sys/class/power_supply/BAT0"
-batteryStatus=$(cat "$batteryPath/status")
-# Fan
-currentLevel=$(cat /proc/acpi/ibm/fan | grep "level:" | awk '{print $2}')
-fanSpeed=$(sensors | grep 'fan1:' | tail -c 10 | tr -d ' ' | sed 's/RPM//')
-# CPU
-cpuTemp=$(sensors | grep 'CPU:' | tail -c 10 | tr -d ' ' | sed 's/°C//')
-cpuFreqStats=$(awk -F ': ' '
-    /cpu MHz/ {
-        freq = int($2);
-        sum += freq;
-        count++;
-        if (min == "" || freq < min) min = freq;
-        if (max == "" || freq > max) max = freq;
-    }
-    END {
-        if (count > 0) avg = sum/count;
-        print min " " max " " int(avg);
-    }
-' /proc/cpuinfo)
-read cpuFreqMin cpuFreqMax cpuFreqAvg <<< "$cpuFreqStats"
+batteryStatus=$(< "$batteryPath/status")
 
-# Power consumption
-consumption=$(expr $(cat "$batteryPath/power_now") / 100000)
-units=$(expr $consumption / 10)
-decimal=$(expr $consumption % 10)
-consumption=$units.$decimal
+if [[ $# -eq 0 || $1 == 'watch' || $1 == 'executor' ]]; then
+    fanData=$(< /proc/acpi/ibm/fan)
+    currentLevel=$(echo "$fanData" | grep "level:" | awk '{print $2}')
 
-if [ $# -gt 0 ]; then
-    if [ $1 == '-h' ]; then
-        cat /proc/acpi/ibm/fan
-    elif [ $1 == 'watch' ]; then
-        watch -n 0.5 -t $0
-    elif [ $1 == 'executor' ]; then
-        echo "$consumption W ($batteryStatus)         $cpuTemp°C ($fanSpeed RPM, $currentLevel)         $cpuFreqMin - $cpuFreqAvg - $cpuFreqMax MHz"
-    else
-        echo "$1" | sudo tee /proc/acpi/ibm/fan >/dev/null
+    sensorData=$(sensors)
+    fanSpeed=$(echo "$sensorData" | grep 'fan1:' | awk '{gsub(/RPM/,"",$2); print $2}')
+
+    cpuTemp=$(echo "$sensorData" | grep 'CPU:' | awk '{gsub(/[+\-°C]/,"",$2); print $2}')
+
+    cpuFreqStats=$(awk -F': ' '
+        /cpu MHz/ {
+            freq = int($2);
+            sum += freq;
+            count++;
+            if (min == "" || freq < min) min = freq;
+            if (max == "" || freq > max) max = freq;
+        }
+        END {
+            if (count > 0) avg = sum/count;
+            print min " " max " " int(avg);
+        }
+    ' /proc/cpuinfo)
+    read -r cpuFreqMin cpuFreqMax cpuFreqAvg <<< "$cpuFreqStats"
+
+    powerNow=$(< "$batteryPath/power_now")
+    consumption=$(( powerNow / 1000000 )).$(( (powerNow % 1000000) / 100000 ))
+fi
+
+if [[ $# -gt 0 ]]; then
+
+    if [[ $1 == 'watch' ]]; then
+        watch -n 0.5 -t "$0"
+
+    elif [[ $1 == 'executor' ]]; then
+        batteryOutput=""
+        if [[ "$batteryStatus" == "Charging" ]]; then
+            batteryOutput="+$consumption W        "
+        elif [[ "$batteryStatus" == "Discharging" ]]; then
+            batteryOutput="$consumption W        "
+        fi
+
+        fanInfo=""
+        if [[ "$fanSpeed" != "0" ]]; then
+            fanInfo=" ($fanSpeed RPM, $currentLevel)"
+        fi
+        
+        echo "$batteryOutput$cpuTemp°C$fanInfo        $cpuFreqMin - $cpuFreqAvg - $cpuFreqMax MHz"
     fi
     exit 0
 fi
