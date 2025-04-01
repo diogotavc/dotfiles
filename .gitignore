@@ -1,2 +1,4 @@
+scripts/.local/bin/yt-dlp
+scripts/.local/bin/pmbootstrap
 scripts/.local/share/applications/mimeapps.list
 services/.config/systemd/user/default.target.wants/
