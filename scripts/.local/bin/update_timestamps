@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Change to the DCIM directory (update this path if needed)
+DCIM_DIR="./Camera"
+cd "$DCIM_DIR" || exit
+
+# Process files with format YYYY-MM-DD-HH-MM-SS-XXX.ext
+for file in 20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]-[0-2][0-9]-[0-5][0-9]-[0-5][0-9]-[0-9][0-9][0-9].*; do
+    if [ -f "$file" ]; then
+        # Extract date parts from filename
+        year=${file:0:4}
+        month=${file:5:2}
+        day=${file:8:2}
+        hour=${file:11:2}
+        minute=${file:14:2}
+        second=${file:17:2}
+        
+        # Format the date for touch command
+        datetime="${year}${month}${day}${hour}${minute}.${second}"
+        
+        # Update file timestamps
+        touch -t "$datetime" "$file"
+        echo "Updated timestamps for $file to $year-$month-$day $hour:$minute:$second"
+    fi
+done
+
+# Process PXL_YYYYMMDD_HHMMSSXXX.* files (Google Pixel format)
+for file in PXL_20[0-9][0-9][0-1][0-9][0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9][0-9][0-9][0-9].*; do
+    if [ -f "$file" ]; then
+        # Extract date parts from filename
+        year=${file:4:4}
+        month=${file:8:2}
+        day=${file:10:2}
+        hour=${file:13:2}
+        minute=${file:15:2}
+        second=${file:17:2}
+        
+        # Format the date for touch command
+        datetime="${year}${month}${day}${hour}${minute}.${second}"
+        
+        # Update file timestamps
+        touch -t "$datetime" "$file"
+        echo "Updated timestamps for $file to $year-$month-$day $hour:$minute:$second"
+    fi
+done
+
+echo "Timestamp update complete."
