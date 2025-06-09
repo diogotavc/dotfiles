@@ -170,6 +170,20 @@
             .card:hover {
                 background-color: #404040;
             }
+            
+            .icon-light {
+                display: none;
+            }
+            
+            .icon-dark {
+                display: block;
+            }
+        }
+        
+        @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+            .icon-dark {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -189,6 +203,11 @@
 
     <div class="grid-container">
         <!-- TODO: replace these with actual links and icons -->
+        <a href="https://github.com/diogotavc" class="card">
+            <img src="./icons/github-mark.png" alt="GitHub" class="card-icon icon-light">
+            <img src="./icons/github-mark-white.png" alt="GitHub" class="card-icon icon-dark">
+            <span class="card-label">GitHub</span>
+        </a>
         <a href="https://www.youtube.com" class="card">
             <img src="https://www.youtube.com/s/desktop/d3493e8e/img/favicon_144x144.png" alt="YouTube" class="card-icon">
             <span class="card-label">YouTube</span>
@@ -196,10 +215,6 @@
         <a href="https://www.reddit.com" class="card">
             <img src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-144x144.png" alt="Reddit" class="card-icon">
             <span class="card-label">Reddit</span>
-        </a>
-        <a href="https://www.github.com" class="card">
-            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="card-icon">
-            <span class="card-label">GitHub</span>
         </a>
         <a href="https://www.wikipedia.org" class="card">
             <img src="https://www.wikipedia.org/static/favicon/wikipedia.ico" alt="Wikipedia" class="card-icon">
