@@ -19,22 +19,6 @@
             overflow: hidden;
         }
 
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #242424;
-                color: #eeeeee;
-            }
-
-            .card {
-                background-color: #383838;
-                border-color: #404040;
-            }
-
-            .card:hover {
-                background-color: #404040;
-            }
-        }
-
         .header {
             text-align: center;
             margin-bottom: 48px;
@@ -113,6 +97,25 @@
             }
         }
 
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #242424;
+                color: #eeeeee;
+            }
+
+            .header p {
+                color: #cccccc;
+            }
+
+            .card {
+                background-color: #383838;
+                border-color: #404040;
+            }
+
+            .card:hover {
+                background-color: #404040;
+            }
+        }
     </style>
 </head>
 <body>
