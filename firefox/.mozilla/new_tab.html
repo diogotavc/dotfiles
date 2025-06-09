@@ -117,6 +117,18 @@
             font-weight: 500;
         }
 
+        .card.placeholder {
+            background-color: #f8f8f8;
+            border: 2px dashed #d0d0d0;
+            opacity: 0.6;
+        }
+
+        .card.placeholder:hover {
+            background-color: #f0f0f0;
+            transform: none;
+            cursor: default;
+        }
+
         @media (max-width: 1024px) {
             .grid-container {
                 grid-template-columns: repeat(4, 1fr);
@@ -178,6 +190,16 @@
             .icon-dark {
                 display: block;
             }
+
+            .card.placeholder {
+                background-color: #2a2a2a;
+                border: 2px dashed #505050;
+                opacity: 0.5;
+            }
+
+            .card.placeholder:hover {
+                background-color: #2a2a2a;
+            }
         }
         
         @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
@@ -203,71 +225,44 @@
 
     <div class="grid-container">
         <!-- TODO: replace these with actual links and icons -->
+        <a href="https://www.google.com/search?num=1&q=Weather+Aveiro" class="card">
+            <img src="./icons/mostly_clear_day.svg" alt="Wikipedia" class="card-icon">
+            <span class="card-label">Weather</span>
+        </a>
+        <a href="https://web.whatsapp.com/" class="card">
+            <img src="./icons/Print_Glyph_Green.png" alt="WhatsApp" class="card-icon">
+            <span class="card-label">WhatsApp</span>
+        </a>
         <a href="https://github.com/diogotavc" class="card">
             <img src="./icons/github-mark.png" alt="GitHub" class="card-icon icon-light">
             <img src="./icons/github-mark-white.png" alt="GitHub" class="card-icon icon-dark">
             <span class="card-label">GitHub</span>
         </a>
-        <a href="https://www.youtube.com" class="card">
-            <img src="https://www.youtube.com/s/desktop/d3493e8e/img/favicon_144x144.png" alt="YouTube" class="card-icon">
-            <span class="card-label">YouTube</span>
+        <a href="https://aistudio.google.com/u/1/prompts/new_chat?pli=1" class="card">
+            <img src="./icons/google-ai-studio-logo.png" alt="AI Studio" class="card-icon">
+            <span class="card-label">AI Studio</span>
         </a>
-        <a href="https://www.reddit.com" class="card">
-            <img src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-144x144.png" alt="Reddit" class="card-icon">
-            <span class="card-label">Reddit</span>
+        <a href="https://www.deepl.com/en/translator" class="card">
+            <img src="./icons/deepl-1.svg" alt="DeepL" class="card-icon">
+            <span class="card-label">DeepL</span>
         </a>
-        <a href="https://www.wikipedia.org" class="card">
-            <img src="https://www.wikipedia.org/static/favicon/wikipedia.ico" alt="Wikipedia" class="card-icon">
-            <span class="card-label">Wikipedia</span>
-        </a>
-        <a href="https://news.google.com" class="card">
-            <img src="https://lh3.googleusercontent.com/J8VeORgW3c3sOWgpC9Y0d0ACn1ZJdM0A7c1_1b4O_2O_tIe_m4xU1U9vO2p_MRmF_1-M" alt="Google News" class="card-icon">
-            <span class="card-label">Google News</span>
-        </a>
-        <a href="https://mail.google.com" class="card">
-            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail" class="card-icon">
-            <span class="card-label">Gmail</span>
-        </a>
-        <a href="https://calendar.google.com" class="card">
-            <img src="https://www.google.com/calendar/images/manifest/icon-144.png" alt="Google Calendar" class="card-icon">
-            <span class="card-label">Calendar</span>
-        </a>
-        <a href="https://drive.google.com" class="card">
-            <img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Google Drive" class="card-icon">
-            <span class="card-label">Drive</span>
-        </a>
-        <a href="https://translate.google.com" class="card">
-            <img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" alt="Google Translate" class="card-icon">
+        <a href="https://translate.google.com/?sl=auto&tl=en&op=translate" class="card">
+            <img src="./icons/Google_Translate_logo.svg" alt="Translate" class="card-icon">
             <span class="card-label">Translate</span>
         </a>
-        <a href="https://maps.google.com" class="card">
-            <img src="https://www.gstatic.com/images/branding/product/1x/maps_48dp.png" alt="Google Maps" class="card-icon">
-            <span class="card-label">Maps</span>
+        <a href="https://calendar.google.com" class="card">
+            <img src="./icons/Google_Calendar_icon_(2020).svg" alt="Calendar" class="card-icon">
+            <span class="card-label">Calendar</span>
         </a>
-        <a href="https://photos.google.com" class="card">
-            <img src="https://www.gstatic.com/images/branding/product/1x/photos_48dp.png" alt="Google Photos" class="card-icon">
-            <span class="card-label">Photos</span>
-        </a>
-        <a href="https://keep.google.com" class="card">
-            <img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt="Google Keep" class="card-icon">
-            <span class="card-label">Keep</span>
-        </a>
-        <a href="https://bard.google.com" class="card">
-            <img src="https://www.gstatic.com/lamda/images/favicon_v1_150223.png" alt="Gemini" class="card-icon">
-            <span class="card-label">Gemini</span>
-        </a>
-        <a href="https://play.google.com" class="card">
-            <img src="https://www.gstatic.com/android/market_images/web/favicon_v2.ico" alt="Google Play" class="card-icon">
-            <span class="card-label">Play Store</span>
-        </a>
-        <a href="https://web.telegram.org" class="card">
-            <img src="https://web.telegram.org/a/favicon.ico" alt="Telegram" class="card-icon">
-            <span class="card-label">Telegram</span>
-        </a>
-        <a href="https://web.whatsapp.com" class="card">
-            <img src="https://static.whatsapp.net/rsrc.php/v3/yP/r/r_y-x5E4wP8.png" alt="WhatsApp" class="card-icon">
-            <span class="card-label">WhatsApp</span>
-        </a>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
+        <div class="card placeholder"></div>
     </div>
 
     <script>
