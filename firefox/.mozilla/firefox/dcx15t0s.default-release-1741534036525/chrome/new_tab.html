@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="https://gnome.pages.gitlab.gnome.org/libadwaita/css/adwaita-1.css">
+    <style>
+        body {
+            background-color: #fafafa;
+            color: #202020;
+            font-family: 'Cantarell', 'Segoe UI', 'Ubuntu', 'sans-serif';
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #242424;
+                color: #eeeeee;
+            }
+
+            .card {
+                background-color: #383838;
+                border-color: #404040;
+            }
+
+            .card:hover {
+                background-color: #404040;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #888888;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 24px;
+            max-width: 960px;
+            width: 100%;
+            padding: 0 24px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #dbdbdb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s, transform 0.2s;
+            aspect-ratio: 1 / 1;
+        }
+
+        .card:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+        }
+
+        .card-label {
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-weight: 400px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Welcome, Diogo!</h1>
+        <p id="datetime"></p>
+    </div>
+
+    <div class="grid-container">
+        <!-- TODO: replace these with actual links and icons -->
+        <a href="https://www.youtube.com" class="card">
+            <img src="https://www.youtube.com/s/desktop/d3493e8e/img/favicon_144x144.png" alt="YouTube" class="card-icon">
+            <span class="card-label">YouTube</span>
+        </a>
+        <a href="https://www.reddit.com" class="card">
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-144x144.png" alt="Reddit" class="card-icon">
+            <span class="card-label">Reddit</span>
+        </a>
+        <a href="https://www.github.com" class="card">
+            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="card-icon">
+            <span class="card-label">GitHub</span>
+        </a>
+        <a href="https://www.wikipedia.org" class="card">
+            <img src="https://www.wikipedia.org/static/favicon/wikipedia.ico" alt="Wikipedia" class="card-icon">
+            <span class="card-label">Wikipedia</span>
+        </a>
+        <a href="https://news.google.com" class="card">
+            <img src="https://lh3.googleusercontent.com/J8VeORgW3c3sOWgpC9Y0d0ACn1ZJdM0A7c1_1b4O_2O_tIe_m4xU1U9vO2p_MRmF_1-M" alt="Google News" class="card-icon">
+            <span class="card-label">Google News</span>
+        </a>
+        <a href="https://mail.google.com" class="card">
+            <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail" class="card-icon">
+            <span class="card-label">Gmail</span>
+        </a>
+        <a href="https://calendar.google.com" class="card">
+            <img src="https://www.google.com/calendar/images/manifest/icon-144.png" alt="Google Calendar" class="card-icon">
+            <span class="card-label">Calendar</span>
+        </a>
+        <a href="https://drive.google.com" class="card">
+            <img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Google Drive" class="card-icon">
+            <span class="card-label">Drive</span>
+        </a>
+        <a href="https://translate.google.com" class="card">
+            <img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" alt="Google Translate" class="card-icon">
+            <span class="card-label">Translate</span>
+        </a>
+        <a href="https://maps.google.com" class="card">
+            <img src="https://www.gstatic.com/images/branding/product/1x/maps_48dp.png" alt="Google Maps" class="card-icon">
+            <span class="card-label">Maps</span>
+        </a>
+        <a href="https://photos.google.com" class="card">
+            <img src="https://www.gstatic.com/images/branding/product/1x/photos_48dp.png" alt="Google Photos" class="card-icon">
+            <span class="card-label">Photos</span>
+        </a>
+        <a href="https://keep.google.com" class="card">
+            <img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt="Google Keep" class="card-icon">
+            <span class="card-label">Keep</span>
+        </a>
+        <a href="https://bard.google.com" class="card">
+            <img src="https://www.gstatic.com/lamda/images/favicon_v1_150223.png" alt="Gemini" class="card-icon">
+            <span class="card-label">Gemini</span>
+        </a>
+        <a href="https://play.google.com" class="card">
+            <img src="https://www.gstatic.com/android/market_images/web/favicon_v2.ico" alt="Google Play" class="card-icon">
+            <span class="card-label">Play Store</span>
+        </a>
+        <a href="https://web.telegram.org" class="card">
+            <img src="https://web.telegram.org/a/favicon.ico" alt="Telegram" class="card-icon">
+            <span class="card-label">Telegram</span>
+        </a>
+        <a href="https://web.whatsapp.com" class="card">
+            <img src="https://static.whatsapp.net/rsrc.php/v3/yP/r/r_y-x5E4wP8.png" alt="WhatsApp" class="card-icon">
+            <span class="card-label">WhatsApp</span>
+        </a>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-UK', options);
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
