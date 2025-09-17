@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MATLAB
+Exec=/home/diogo/.local/bin/matlab
+Comment=Matlab R2025a
+Icon=/home/diogo/.local/MATLAB/R2025a/bin/glnxa64/cef_resources/matlab_icon.png
+Terminal=true
