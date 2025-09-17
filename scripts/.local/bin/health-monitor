@@ -56,12 +56,14 @@ if [[ $# -gt 0 ]]; then
         if [[ "$fanSpeed" != "0" ]]; then
             fanInfo=" ($fanSpeed RPM, $currentLevel)"
         fi
-        
+
         echo "$batteryOutput$cpuTemp°C$fanInfo        $cpuFreqMin - $cpuFreqAvg - $cpuFreqMax MHz"
     fi
     exit 0
 fi
 
+echo "Welcome back, $(getent passwd $USER | cut -d ':' -f 5)!\n"
 echo "Battery:        $consumption W ($batteryStatus)"
 echo "Temperature:    $cpuTemp°C ($fanSpeed RPM, $currentLevel)"
 echo "Frequency:      $cpuFreqMin - $cpuFreqAvg - $cpuFreqMax MHz"
+echo "Sleep State:    $(cat /sys/power/mem_sleep)"
