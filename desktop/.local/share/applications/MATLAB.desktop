@@ -2,8 +2,9 @@
 Encoding=UTF-8
 Type=Application
 Name=MATLAB
-Exec=/home/diogo/.local/bin/matlab -desktop
-Comment=Matlab R2025a
-Icon=/home/diogo/.local/MATLAB/R2025a/bin/glnxa64/cef_resources/matlab_icon.png
-Terminal=false
+# Reminder:
+# podman run -it --rm -p 8888:8888 --shm-size=512M mathworks/matlab:r2025a -browser
+Exec=podman start -ai matlab-r2025a
+Icon=/home/diogo/.local/bin/matlab_icon.png
+Terminal=true
 
