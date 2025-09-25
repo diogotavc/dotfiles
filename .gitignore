@@ -3,5 +3,6 @@ scripts/.local/bin/pmbootstrap
 scripts/.local/share/applications/mimeapps.list
 scripts/.local/bin/matlab
 scripts/.local/bin/mex
+scripts/.local/bin/MATLABConnector
 
 services/.config/systemd/user/default.target.wants/
