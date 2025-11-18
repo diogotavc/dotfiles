@@ -15,11 +15,24 @@ clrreset=$(tput sgr0) #normal - resets all
 
 if $SCRIPT_DEBUG; then echo "${clrstandout}Stowing files in ${PWD}.${clrreset}"; fi
 
+ignored_packages=()
+if [ -f .stowall-ignore ]; then
+  while IFS= read -r line || [ -n "$line" ]; do
+    [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+    ignored_packages+=("$line")
+  done < .stowall-ignore
+fi
+
 cd ~/.dotfiles
 for files in ~/.dotfiles/*; do
   if [ -d ${files} ]; then
-    stow -R $(basename $files)
-    if $SCRIPT_DEBUG; then echo "$(basename $files) stowed."; fi
+    package_name=$(basename $files)
+    if [[ " ${ignored_packages[@]} " =~ " ${package_name} " ]]; then
+      if $SCRIPT_DEBUG; then echo "${clrwarning}${package_name} ignored.${clrreset}"; fi
+      continue
+    fi
+    stow -R $package_name
+    if $SCRIPT_DEBUG; then echo "$package_name stowed."; fi
   fi
 done
 cd - > /dev/null
