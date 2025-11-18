@@ -16,7 +16,7 @@ if [[ $# -eq 0 || $1 == 'watch' || $1 == 'executor' ]]; then
     currentLevel=$(echo "$fanData" | grep "level:" | awk '{print $2}')
 
     sensorData=$(sensors)
-    fanSpeed=$(echo "$sensorData" | grep 'fan1:' | awk '{gsub(/RPM/,"",$2); print $2}')
+    fanSpeed=$(echo "$sensorData" | grep 'fan1:' | head -1 | awk '{gsub(/RPM/,"",$2); print $2}')
 
     cpuTemp=$(echo "$sensorData" | grep 'CPU:' | awk '{gsub(/[+\-°C]/,"",$2); print $2}')
 
