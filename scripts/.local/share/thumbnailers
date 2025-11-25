@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=/home/yourusername/.local/bin/arw-thumbnailer
+Exec=/home/yourusername/.local/bin/arw-thumbnailer %i %o %s
+MimeType=image/x-sony-arw;image/x-sony-sr2;image/x-sony-srf;
