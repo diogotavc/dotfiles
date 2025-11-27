@@ -25,6 +25,12 @@ distrobox-export --bin ~/.local/MATLAB/bin/matlab
 exit
 ```
 
+4. You can now remove the container desktop file, because it really isn't needed:
+
+```shell
+distrobox generate-entry -d mpeci-box
+```
+
 ---
 
 Since both the icon and desktop file are already included in this repository, no need to do any of the other manual steps. It may ask you for your account once (first launch) or twice (first and second launch).
