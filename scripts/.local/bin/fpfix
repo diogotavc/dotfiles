@@ -1,0 +1,13 @@
+sudo systemctl stop fprintd
+
+# Find device path and send USBDEVFS_RESET
+DEV_PATH=$(lsusb -d 06cb:00f9 | awk -F '[ :]' '{printf "/dev/bus/usb/%s/%s", $2, $4}')
+if [ -z "$DEV_PATH" ]; then
+    echo "Device not found!"
+else
+    echo "Resetting $DEV_PATH..."
+    sudo python3 -c "import fcntl, os; fd=os.open('$DEV_PATH', os.O_WRONLY); fcntl.ioctl(fd, 21780, 0); os.close(fd)"
+    echo "Reset complete."
+fi
+
+sudo systemctl start fprintd
