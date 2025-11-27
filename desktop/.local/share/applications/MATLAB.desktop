@@ -2,8 +2,8 @@
 Encoding=UTF-8
 Type=Application
 Name=MATLAB
-Exec=/usr/local/MATLAB/R2025a/bin/matlab -desktop
+Exec=/home/diogo/.local/bin/matlab -desktop
 Comment=Matlab R2025a
-Icon=/usr/local/MATLAB/R2025a/bin/glnxa64/cef_resources/matlab_icon.png
+Icon=/home/diogo/.local/share/icons/matlab_icon.png
 Terminal=false
 
