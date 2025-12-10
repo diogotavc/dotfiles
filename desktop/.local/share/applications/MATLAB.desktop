@@ -2,8 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=MATLAB
-Exec=/home/diogo/.local/bin/matlab -desktop
+Exec=distrobox enter mpeci-box -- /home/diogo/.local/MATLAB/R2025a/bin/matlab -desktop
 Comment=Matlab R2025a
-Icon=/home/diogo/.local/share/icons/matlab_icon.png
+Icon=/home/diogo/.local/MATLAB/R2025a/bin/glnxa64/cef_resources/matlab_icon.png
 Terminal=false
-
