@@ -8,6 +8,8 @@ alias lsl='ls -l'
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias uh='echo unset HISTFILE && unset HISTFILE'
 alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
+alias aw-ssh='et es-xrdp@10.255.33.192'
+alias aw-et='ssh es-xrdp@10.255.33.192'
 
 echo -e "$(health-monitor)\n"
 
