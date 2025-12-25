@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <video_file>"
+    exit 1
+fi
+
+INPUT_FILE="$1"
+
+if [ ! -f "$INPUT_FILE" ]; then
+    echo "Error: File '$INPUT_FILE' not found."
+    exit 1
+fi
+
+BASENAME=$(basename "$INPUT_FILE")
+FILENAME_NO_EXT="${BASENAME%.*}"
+
+OUTPUT_DIR="frames-${FILENAME_NO_EXT}"
+mkdir -p "$OUTPUT_DIR"
+
+echo "Extracting frames from '$INPUT_FILE' to '$OUTPUT_DIR'..."
+
+ffmpeg -i "$INPUT_FILE" "$OUTPUT_DIR/frame_%04d.png" -hide_banner
+
+echo "Done! Frames saved in $OUTPUT_DIR"
