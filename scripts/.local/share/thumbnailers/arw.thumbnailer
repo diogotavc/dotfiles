@@ -1,10 +1,8 @@
 #!/bin/bash
 # Arguments: $1=input, $2=output, $3=size
 
-# Get orientation (1-8)
 ORIENT=$(exiftool -n -S -Orientation# "$1" | awk '{print $2}')
 
-# Map to degrees
 case "$ORIENT" in
     8) ANGLE=270 ;;
     6) ANGLE=90  ;;
@@ -12,5 +10,4 @@ case "$ORIENT" in
     *) ANGLE=0   ;;
 esac
 
-# Extract -> Rotate -> Resize
 exiftool -b -PreviewImage "$1" | convert - -rotate "$ANGLE" -thumbnail "$3x$3" "$2"
